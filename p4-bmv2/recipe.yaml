@@ -11,8 +11,10 @@ build:
   script: build.sh
 
 source:
-- git: https://gh-p.tinylake.tech/p4lang/behavioral-model
+- git: https://github.com/p4lang/behavioral-model
   rev: ${{ commit }}
+- git: https://github.com/p4lang/PI
+  target_directory: pi
 
 requirements:
   host:

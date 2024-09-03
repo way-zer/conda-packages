@@ -1,8 +1,14 @@
+cd pi
+git submodule update --init --recursive
+./autogen.sh
+./configure --prefix=$PREFIX --with-proto --without-internal-rpc --without-cli --without-bmv2 [--with-sysrepo]
+make -j${CPU_COUNT} ${VERBOSE_AT}
+make install
+cd ..
 
 ./autogen.sh
-./configure --prefix=$PREFIX
+./configure --prefix=$PREFIX --with-pi
 make -j${CPU_COUNT} ${VERBOSE_AT}
-
 make install
 
 #Install
