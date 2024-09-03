@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://cdn.jsdelivr.net/gh/prefix-dev/recipe-format@main/schema.json
+context:
+  version: 5.6.3
+  sha256: e686e50a2a6202c9759dac655962e61c9120d9d046bad3e46555ed38c13b5088
+  # version: 6.0.3
+  # sha256: ba7b01677e0a11c92c58bd8869a9dc9b293712883f53bbeabfcc583ae7ffe925
+
+package:
+  name: omnetpp-core
+  version: ${{ version }}
+
+build:
+  number: 2
+  script: build.sh
+
+source:
+- url: https://gh.tinylake.tech/https://github.com/omnetpp/omnetpp/releases/download/omnetpp-${{ version }}/omnetpp-${{ version }}-src-core.tgz
+# - url: https://gh.tinylake.tech/https://github.com/omnetpp/omnetpp/releases/download/omnetpp-${{ version }}/omnetpp-${{ version }}-core.tgz
+  sha256: ${{ sha256 }}
+  target_directory: omnetpp
+- path: ./activate.sh
+
+requirements:
+  host:
+    - cairo
+    - openmpi
+    - libxml2
+    - zlib
+  run:
+    - openmpi
+  build:
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - make
+    - bison
+    - flex
+    - perl

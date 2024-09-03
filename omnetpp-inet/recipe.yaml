@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://cdn.jsdelivr.net/gh/prefix-dev/recipe-format@main/schema.json
+context:
+  version: 4.2.1
+  sha256: 5368f24147c463cbada3ed4af44bbf193e933e0d4c435319ba054b6cb6a263fc
+
+package:
+  name: omnetpp-inet
+  version: ${{ version }}
+
+build:
+  number: 1
+  script: build.sh
+
+source:
+- url: https://gh.tinylake.tech/https://github.com/inet-framework/inet/releases/download/v${{version}}/inet-${{version}}-src.tgz
+  sha256: ${{ sha256 }}
+  target_directory: inet
+- path: ./activate.sh
+
+requirements:
+  host:
+    - omnetpp-core
+  build:
+    - omnetpp-core # need activate
+    - ${{ compiler('cxx') }}
+    - kernel-headers_linux-64
+    - make
+    - python
