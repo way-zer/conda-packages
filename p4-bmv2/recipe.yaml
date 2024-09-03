@@ -22,7 +22,7 @@ requirements:
     - libevent
     - libopenssl-static
     - thrift-cpp
-    - nanomsg # deepvision/nanomsg
+    # - nanomsg # deepvision/nanomsg
     - gmp
     - libboost-devel
     - libpcap
