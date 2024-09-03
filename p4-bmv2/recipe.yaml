@@ -28,6 +28,7 @@ requirements:
     - libpcap
     - libevent
     - libprotobuf
+    - grpc-cpp
   build:
     - automake
     - cmake
@@ -37,5 +38,4 @@ requirements:
     - bison
     - ${{ compiler('cxx') }}
     - protobuf
-    - grpc-cpp
     - pkg-config
