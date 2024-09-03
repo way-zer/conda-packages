@@ -1,4 +1,5 @@
 cd pi
+export BOOST_ROOT=$PREFIX/lib
 ./autogen.sh
 ./configure --prefix=$PREFIX --with-proto --without-internal-rpc --without-cli --without-bmv2 [--with-sysrepo]
 make -j${CPU_COUNT} ${VERBOSE_AT}
