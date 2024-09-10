@@ -14,7 +14,7 @@ source:
 
 requirements:
   host:
-    # - nanomsg # deepvision/nanomsg
+    - python=3.9
     - libboost-devel
     - libprotobuf
     - grpc-cpp
