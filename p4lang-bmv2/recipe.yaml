@@ -1,34 +1,28 @@
 # yaml-language-server: $schema=https://cdn.jsdelivr.net/gh/prefix-dev/recipe-format@main/schema.json
-context:
-  commit: ec328ab87fe10cea0e061a4d9eb15408fb49729a
-
 package:
-  name: p4-bmv2
-  version: 0.1.dev+${{ commit }}
+  name: p4lang-bmv2
+  version: 2024.9
 
 build:
-  number: 1
+  number: 0
   script: build.sh
 
 source:
 - git: https://github.com/p4lang/behavioral-model
-  rev: ${{ commit }}
-- git: https://github.com/p4lang/PI
-  target_directory: pi
+  rev: ec328ab87fe10cea0e061a4d9eb15408fb49729a
 
 requirements:
   host:
-    - python=3.9
     - libevent
     - libopenssl-static
-    - thrift-cpp
     # - nanomsg # deepvision/nanomsg
-    - gmp
     - libboost-devel
-    - libpcap
+    - gmp
     - libevent
-    - libprotobuf
-    - grpc-cpp
+    - libpcap
+    - python=3.9
+    - thrift-cpp
+    - p4-pi
   build:
     - automake
     - cmake
@@ -37,5 +31,9 @@ requirements:
     - flex
     - bison
     - ${{ compiler('cxx') }}
-    - protobuf
     - pkg-config
+  run_exports:
+    weak:
+      - ${{ pin_subpackage('p4-pi', exact=True) }}
+  run:
+    - p4-pi
