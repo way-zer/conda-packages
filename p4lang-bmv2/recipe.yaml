@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://cdn.jsdelivr.net/gh/prefix-dev/recipe-format@main/schema.json
 package:
   name: p4lang-bmv2
-  version: 2024.9
+  version: "2024.9"
 
 build:
   number: 1
