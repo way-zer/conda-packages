@@ -4,7 +4,7 @@ package:
   version: 2024.9
 
 build:
-  number: 0
+  number: 1
   script: build.sh
 
 source:
@@ -20,9 +20,9 @@ requirements:
     - gmp
     - libevent
     - libpcap
-    - python=3.9
+    # - python=3.9
     - thrift-cpp
-    - p4-pi
+    - p4lang-pi
   build:
     - automake
     - cmake
@@ -32,8 +32,6 @@ requirements:
     - bison
     - ${{ compiler('cxx') }}
     - pkg-config
-  run_exports:
-    weak:
-      - ${{ pin_subpackage('p4-pi', exact=True) }}
+    # - zlib
   run:
-    - p4-pi
+    - p4lang-pi

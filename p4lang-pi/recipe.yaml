@@ -1,10 +1,10 @@
 # yaml-language-server: $schema=https://cdn.jsdelivr.net/gh/prefix-dev/recipe-format@main/schema.json
 package:
   name: p4lang-pi
-  version: 2024.9
+  version: "2024.9"
 
 build:
-  number: 0
+  number: 2
   script: build.sh
 
 source:
@@ -13,7 +13,7 @@ source:
 requirements:
   host:
     - libboost-devel
-    - protobuf=3.21.1
+    - libprotobuf=3.21
     - grpc-cpp
   build:
     - automake
@@ -25,6 +25,5 @@ requirements:
     - ${{ compiler('cxx') }}
     - pkg-config
     - zlib
-  run_exports:
-    strong:
-      - ${{ pin_subpackage('libprotobuf', max_pin='x') }}
+  run:
+    - libprotobuf=3.21
